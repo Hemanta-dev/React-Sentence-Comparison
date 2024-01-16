@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { patienceDiff } from './sentenceCompare';
 
 function App() {
+  let a = "Hi, I'm Hemanta Adhikari . I'm from Surkhet.";
+  let b = "I'm from Surkhet.Underrated Rapper also, Now I'm in Software Company.";
+
+  const diff = patienceDiff(a.split(""), b.split(""));
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {diff.lines.map((cObj, index) => {
+        if (cObj.aIndex === -1 && cObj.bIndex >= 0) {
+          cObj.line = `!${cObj.line}!`;
+          return (
+            <span key={index} style={{ color: 'green' }}>
+              {cObj.line.replaceAll(/!(\s)+!/g, '␣').replaceAll(/!/g, '')}
+            </span>
+          );
+        } else if (cObj.bIndex === -1 && cObj.aIndex >= 0) {
+          cObj.line = `!${cObj.line}!`;
+          return (
+            <span key={index} style={{ color: 'red' }}>
+              {cObj.line.replaceAll(/!(\s)+!/g, '␣').replaceAll(/!/g, '')}
+            </span>
+          );
+        }
+        return cObj.line;
+      })}
+
+
     </div>
   );
 }

@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# React Sentence Comparison - README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Welcome to the React Sentence Comparison project! This repository contains a React application that uses the `patienceDiff` function from `sentenceCompare.js` to compare two sentences and visualize the differences. The differences are displayed in a React component in `App.js`.
 
-In the project directory, you can run:
+## Getting Started
 
-### `yarn start`
+To run the project locally, follow these steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the repository to your local machine:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```bash
+   git clone [repository-url]
+   ```
 
-### `yarn test`
+2. Install the necessary dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   cd [project-folder]
+   yarn
+   ```
 
-### `yarn build`
+3. Run the application:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   yarn start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   The application will be accessible at [http://localhost:3000](http://localhost:3000) in your web browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Code Explanation
 
-### `yarn eject`
+### `sentenceCompare.js`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This file contains the `patienceDiff` function, which compares two arrays of lines (sentences) and provides detailed information about the differences. The function uses the patience diff algorithm to identify added, deleted, and moved lines.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Key functions in `sentenceCompare.js`:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `findUnique`: Finds unique lines in a given array within a specified range.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `uniqueCommon`: Finds common lines between two arrays and returns their indices.
 
-## Learn More
+- `longestCommonSubsequence`: Determines the longest common subsequence of unique common lines.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `addToResult`: Adds lines to the result array with indices and tracks moved lines.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `addSubMatch`: Adds submatches to the result array.
 
-### Code Splitting
+- `recurseLCS`: Recursively processes the longest common subsequence.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `patienceDiff`: Main function that orchestrates the line comparison.
 
-### Analyzing the Bundle Size
+### `App.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This file contains the React application that utilizes the `patienceDiff` function to compare sentences. The differences are visualized by coloring added words in blue and removed words in red.
 
-### Making a Progressive Web App
+Key components in `App.js`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `App`: The main React component that renders the sentence comparison.
 
-### Advanced Configuration
+- `diff.lines.map`: Maps over the lines from the comparison result and applies styling to added and removed words.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to explore, experiment, and enhance the React Sentence Comparison project! Happy coding! 🚀👩‍💻👨‍💻
